@@ -48,6 +48,11 @@ tools["rmagatti/session-lens"] = {
         require('session-lens').setup({})
     end
 }
+tools["Shatur/neovim-session-manager"] = {
+    opt = true,
+    cmd = { "SessionManager" },
+    config = conf.session_manager
+}
 tools["thinca/vim-quickrun"] = {opt = true, cmd = {"QuickRun", "Q"}}
 tools["michaelb/sniprun"] = {
     opt = true,

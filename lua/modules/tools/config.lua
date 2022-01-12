@@ -76,7 +76,7 @@ function config.telescope()
     require("telescope").load_extension("zoxide")
     require("telescope").load_extension("frecency")
     require('telescope').load_extension('projects')
-    require("telescope").load_extension("session-lens")
+    -- require("telescope").load_extension("session-lens")
 end
 
 function config.project()
@@ -116,17 +116,31 @@ function config.project()
     }
 end
 
-function config.auto_session()
-    local opts = {
-        log_level = "info",
-        auto_session_enable_last_session = true,
-        auto_session_root_dir = sessions_dir,
-        auto_session_enabled = true,
-        auto_save_enabled = true,
-        auto_restore_enabled = true,
-        auto_session_suppress_dirs = nil
-    }
+-- function config.auto_session()
+--     local opts = {
+--         log_level = "info",
+--         auto_session_enable_last_session = true,
+--         auto_session_root_dir = sessions_dir,
+--         auto_session_enabled = true,
+--         auto_save_enabled = true,
+--         auto_restore_enabled = true,
+--         auto_session_suppress_dirs = nil
+--     }
 
+--     require("auto-session").setup(opts)
+-- end
+
+function config.session_manager()
+    local Path = require('plenary.path')
+    local opts = {
+        sessions_dir = Path:new(vim.fn.stdpath('data'), 'sessions'), -- The directory where the session files will be saved.
+        path_replacer = '__', -- The character to which the path separator will be replaced for session files.
+        colon_replacer = '++', -- The character to which the colon symbol will be replaced for session files.
+        autoload_mode = require('session_manager.config').AutoloadMode.CurrentDir, -- Possible values: Disabled, CurrentDir, LastSession
+        autosave_last_session = true, -- Automatically save last session on exit and on session switch.
+        autosave_ignore_not_normal = true, -- Plugin will not save a session when no writable and listed buffers are opened.
+        autosave_only_in_session = true, -- Always autosaves session. If true, only autosaves after a session is active.
+      }
     require("auto-session").setup(opts)
 end
 
