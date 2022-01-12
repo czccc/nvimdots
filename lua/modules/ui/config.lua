@@ -122,6 +122,30 @@ function config.lualine()
 end
 
 function config.nvim_tree()
+    vim.g.nvim_tree_window_picker_exclude = {
+        filetype = { "notify", "packer", "qf" },
+        buftype = { "terminal" },
+    }
+    vim.g.nvim_tree_icons = {
+        default = "",
+        symlink = "",
+        git = {
+          unstaged = "",
+          staged = "S",
+          unmerged = "",
+          renamed = "➜",
+          deleted = "",
+          untracked = "U",
+          ignored = "◌",
+        },
+        folder = {
+          default = "",
+          open = "",
+          empty = "",
+          empty_open = "",
+          symlink = "",
+        },
+    }
     require("nvim-tree").setup {
         disable_netrw = true,
         hijack_netrw = true,
@@ -133,7 +157,7 @@ function config.nvim_tree()
         update_cwd = false,
         update_to_buf_dir = {enable = true, auto_open = true},
         diagnostics = {
-            enable = false,
+            enable = true,
             icons = {hint = "", info = "", warning = "", error = ""}
         },
         update_focused_file = {
@@ -155,7 +179,18 @@ function config.nvim_tree()
             relativenumber = false,
             signcolumn = "yes"
         },
-        trash = {cmd = "trash", require_confirm = true}
+        trash = {cmd = "trash", require_confirm = true},
+        quit_on_open = 0,
+        git_hl = 1,
+        disable_window_picker = 0,
+        root_folder_modifier = ":t",
+        show_icons = {
+            git = 1,
+            folders = 1,
+            files = 1,
+            folder_arrows = 1,
+            tree_width = 30,
+        },
     }
 end
 
@@ -179,7 +214,7 @@ function config.nvim_bufferline()
             offsets = {
                 {
                     filetype = "NvimTree",
-                    text = "File Explorer",
+                    text = "Explorer",
                     text_align = "center",
                     padding = 1
                 }

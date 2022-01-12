@@ -73,7 +73,7 @@ local function load_options()
         foldlevelstart = 99,
         ruler = true,
         cursorline = true,
-        cursorcolumn = true,
+        cursorcolumn = false,
         list = true,
         showtabline = 2,
         winwidth = 30,
@@ -126,7 +126,9 @@ local function load_options()
         vim.g.python_host_prog = "/usr/bin/python"
         vim.g.python3_host_prog = "/usr/local/bin/python3"
     end
-    for name, value in pairs(global_local) do vim.o[name] = value end
+    for name, value in pairs(global_local) do 
+        vim.opt[name] = value
+    end
     bind_option(bw_local)
 end
 

@@ -44,9 +44,11 @@ local disable_distribution_plugins = function()
 end
 
 local leader_map = function()
-    vim.g.mapleader = ","
-    vim.api.nvim_set_keymap("n", " ", "", {noremap = true})
-    vim.api.nvim_set_keymap("x", " ", "", {noremap = true})
+    vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
+    vim.g.mapleader = " "
+    vim.g.maplocalleader = " "
+    -- vim.api.nvim_set_keymap("n", " ", "", {noremap = true})
+    -- vim.api.nvim_set_keymap("x", " ", "", {noremap = true})
 end
 
 local neovide_config = function()
@@ -89,31 +91,31 @@ local dashboard_config = function()
 
     vim.g.dashboard_custom_section = {
         change_colorscheme = {
-            description = {" Scheme change              comma s c "},
+            description = {" Scheme change              space s c "},
             command = "DashboardChangeColorscheme"
         },
         find_frecency = {
-            description = {" File frecency              comma f r "},
+            description = {" File frecency              space f r "},
             command = "Telescope frecency"
         },
         find_history = {
-            description = {" File history               comma f e "},
+            description = {" File history               space f e "},
             command = "DashboardFindHistory"
         },
         find_project = {
-            description = {" Project find               comma f p "},
+            description = {" Project find               space f p "},
             command = "Telescope project"
         },
         find_file = {
-            description = {" File find                  comma f f "},
+            description = {" File find                  space f f "},
             command = "DashboardFindFile"
         },
         file_new = {
-            description = {" File new                   comma f n "},
+            description = {" File new                   space f n "},
             command = "DashboardNewFile"
         },
         find_word = {
-            description = {" Word find                  comma f w "},
+            description = {" Word find                  space f w "},
             command = "DashboardFindWord"
         }
     }
@@ -144,7 +146,7 @@ local load_core = function()
     leader_map()
 
     pack.ensure_plugins()
-    neovide_config()
+    -- neovide_config()
     dashboard_config()
     -- clipboard_settings()
 

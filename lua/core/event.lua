@@ -13,28 +13,36 @@ function autocmd.nvim_create_augroups(definitions)
     end
 end
 
+
 function autocmd.load_autocmds()
     local definitions = {
         packer = {},
         bufs = {
-            -- Reload vim config automatically
             {
+                -- Reload vim config automatically
                 "BufWritePost",
                 [[$VIM_PATH/{*.vim,*.yaml,vimrc} nested source $MYVIMRC | redraw]]
-            }, -- Reload Vim script automatically if setlocal autoread
-            {
+            },
+            { 
+                -- Reload Vim script automatically if setlocal autoread
                 "BufWritePost,FileWritePost", "*.vim",
                 [[nested if &l:autoread > 0 | source <afile> | echo 'source ' . bufname('%') | endif]]
-            }, {"BufWritePre", "/tmp/*", "setlocal noundofile"},
+            },
+            {"BufWritePre", "/tmp/*", "setlocal noundofile"},
             {"BufWritePre", "COMMIT_EDITMSG", "setlocal noundofile"},
             {"BufWritePre", "MERGE_MSG", "setlocal noundofile"},
             {"BufWritePre", "*.tmp", "setlocal noundofile"},
             {"BufWritePre", "*.bak", "setlocal noundofile"},
-            {"BufEnter", "*", "silent! lcd %:p:h"}, -- auto place to last edit
+            -- Auto format when save
+            -- {"BufWritePost", "*", "FormatWrite"},
+            -- Auto change work directory
+            -- {"BufEnter", "*", "silent! lcd %:p:h"},
+            -- auto place to last edit
             {
                 "BufReadPost", "*",
                 [[if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g'\"" | endif]]
-            } -- Auto toggle fcitx5
+            }
+            -- Auto toggle fcitx5
             -- {"InsertLeave", "* :silent", "!fcitx5-remote -c"},
             -- {"BufCreate", "*", ":silent !fcitx5-remote -c"},
             -- {"BufEnter", "*", ":silent !fcitx5-remote -c "},
@@ -45,10 +53,12 @@ function autocmd.load_autocmds()
             {
                 "WinEnter,BufEnter,InsertLeave", "*",
                 [[if ! &cursorline && &filetype !~# '^\(dashboard\|clap_\)' && ! &pvw | setlocal cursorline | endif]]
-            }, {
+            },
+            {
                 "WinLeave,BufLeave,InsertEnter", "*",
                 [[if &cursorline && &filetype !~# '^\(dashboard\|clap_\)' && ! &pvw | setlocal nocursorline | endif]]
-            }, -- Force write shada on leaving nvim
+            },
+            -- Force write shada on leaving nvim
             {
                 "VimLeave", "*",
                 [[if has('nvim') | wshada! | else | wviminfo! | endif]]
