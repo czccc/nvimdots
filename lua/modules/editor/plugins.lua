@@ -90,6 +90,7 @@ editor["vimlab/split-term.vim"] = {opt = true, cmd = {"Term", "VTerm"}}
 editor["akinsho/nvim-toggleterm.lua"] = {
     opt = true,
     event = "BufRead",
+    cmd = "ToggleTerm",
     config = conf.toggleterm
 }
 editor["numtostr/FTerm.nvim"] = {opt = true, event = "BufRead"}

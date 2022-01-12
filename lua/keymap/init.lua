@@ -98,7 +98,8 @@ local plug_map = {
         ["n|<Leader>gG"] = map_cu("Git"):with_noremap():with_silent(),
         ["n|<Leader>gps"] = map_cr("G push"):with_noremap():with_silent(),
         ["n|<Leader>gpl"] = map_cr("G pull"):with_noremap():with_silent(),
-
+        ["n|<Leader>tt"] = map_cr("ToggleTerm direction=float"):with_noremap()
+            :with_silent(),
     },
     trouble = {
         -- Plugin trouble
@@ -113,7 +114,7 @@ local plug_map = {
             :with_silent(),
         ["n|<leader>cl"] = map_cr("TroubleToggle loclist"):with_noremap()
             :with_silent(),
-    },
+},
     telescope = {
         -- Plugin Telescope
         ["n|<Leader>fp"] = map_cu(
@@ -125,7 +126,7 @@ local plug_map = {
         ["n|<Leader>fe"] = map_cu("DashboardFindHistory"):with_noremap()
             :with_silent(),
         ["n|<Leader>ff"] = map_cu("DashboardFindFile"):with_noremap():with_silent(),
-        ["n|<Leader>sc"] = map_cu("DashboardChangeColorscheme"):with_noremap()
+        ["n|<Leader>fc"] = map_cu("DashboardChangeColorscheme"):with_noremap()
             :with_silent(),
         ["n|<Leader>fw"] = map_cu("DashboardFindWord"):with_noremap():with_silent(),
         ["n|<Leader>fn"] = map_cu("DashboardNewFile"):with_noremap():with_silent(),
@@ -134,6 +135,10 @@ local plug_map = {
         ["n|<Leader>fg"] = map_cu("Telescope git_files"):with_noremap()
             :with_silent(),
         ["n|<Leader>fz"] = map_cu("Telescope zoxide list"):with_noremap()
+            :with_silent(),
+        ["n|<Leader>fl"] = map_cu("Telescope live_grep theme=ivy"):with_noremap()
+            :with_silent(),
+        ["n|<Leader>fk"] = map_cu("Telescope keymaps"):with_noremap()
             :with_silent(),
     },
     move = {
