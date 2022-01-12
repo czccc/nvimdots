@@ -71,10 +71,18 @@ function autocmd.load_autocmds()
         ft = {
             {"BufNewFile,BufRead", "*.toml", " setf toml"},
             {"FileType", "make", "set noexpandtab shiftwidth=8 softtabstop=0"},
+            {"FileType", "go,rust", "setlocal tabstop=4 shiftwidth=4"},
+            {"FileType", "c,cpp", "setlocal tabstop=2 shiftwidth=2"},
+            {"FileType", "python", "setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4"},
+            {
+                "FileType", "javascript,typescript,html",
+                "setlocal tabstop=2 shiftwidth=2"
+            },
             {
                 "FileType", "dashboard",
                 "set showtabline=0 | autocmd WinLeave <buffer> set showtabline=2"
-            }, {
+            },
+            {
                 "FileType", "*",
                 [[setlocal formatoptions-=c formatoptions-=r formatoptions-=o]]
             },
@@ -93,5 +101,12 @@ function autocmd.load_autocmds()
 
     autocmd.nvim_create_augroups(definitions)
 end
+
+-- Use relative & absolute line numbers in 'n' & 'i' modes respectively
+vim.cmd[[ au InsertEnter * set relativenumber ]]
+vim.cmd[[ au InsertLeave * set norelativenumber ]]
+
+-- Don't show any numbers inside terminals
+vim.cmd [[ au TermOpen term://* setlocal nonumber norelativenumber | setfiletype terminal ]]
 
 autocmd.load_autocmds()

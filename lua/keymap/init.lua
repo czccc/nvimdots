@@ -18,8 +18,8 @@ local plug_map = {
     },
     bufferline = {
         -- Bufferline
-        ["n|<Tab>"] = map_cr("BufferLineCycleNext"):with_noremap(),
-        ["n|<S-Tab>"] = map_cr("BufferLineCyclePrev"):with_noremap(),
+        ["n|<Tab>"] = map_cr("BufferLineCycleNext"):with_noremap():with_silent(),
+        ["n|<S-Tab>"] = map_cr("BufferLineCyclePrev"):with_noremap():with_silent(),
         ["n|<A-j>"] = map_cr("BufferLineCycleNext"):with_noremap():with_silent(),
         ["n|<A-k>"] = map_cr("BufferLineCyclePrev"):with_noremap():with_silent(),
         ["n|<leader>bb"] = map_cr("lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})"):with_noremap():with_silent(),
