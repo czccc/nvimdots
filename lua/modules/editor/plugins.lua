@@ -99,11 +99,6 @@ editor["norcalli/nvim-colorizer.lua"] = {
     event = "BufRead",
     config = conf.nvim_colorizer
 }
-editor["rmagatti/auto-session"] = {
-    opt = true,
-    cmd = {"SaveSession", "RestoreSession", "DeleteSession"},
-    config = conf.auto_session
-}
 editor["jdhao/better-escape.vim"] = {opt = true, event = "InsertEnter"}
 editor["rcarriga/nvim-dap-ui"] = {
     opt = false,

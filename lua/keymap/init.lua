@@ -118,7 +118,7 @@ local plug_map = {
     telescope = {
         -- Plugin Telescope
         ["n|<Leader>fp"] = map_cu(
-            "lua require('telescope').extensions.project.project{}"):with_noremap()
+            "lua require('telescope').extensions.projects.projects{}"):with_noremap()
             :with_silent(),
         ["n|<Leader>fr"] = map_cu(
             "lua require('telescope').extensions.frecency.frecency{}"):with_noremap()

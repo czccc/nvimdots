@@ -10,7 +10,8 @@ tools["nvim-telescope/telescope.nvim"] = {
     config = conf.telescope,
     requires = {
         {"nvim-lua/plenary.nvim", opt = false},
-        {"nvim-lua/popup.nvim", opt = true}
+        {"nvim-lua/popup.nvim", opt = true},
+        {"rmagatti/auto-session", opt = true}
     }
 }
 tools["nvim-telescope/telescope-fzf-native.nvim"] = {
@@ -19,6 +20,7 @@ tools["nvim-telescope/telescope-fzf-native.nvim"] = {
     after = "telescope.nvim"
 }
 tools["nvim-telescope/telescope-project.nvim"] = {
+    -- disable = true,
     opt = true,
     after = "telescope.nvim"
 }
@@ -28,6 +30,24 @@ tools["nvim-telescope/telescope-frecency.nvim"] = {
     requires = {{"tami5/sqlite.lua", opt = true}}
 }
 tools["jvgrootveld/telescope-zoxide"] = {opt = true, after = "telescope.nvim"}
+tools["ahmedkhalf/project.nvim"] = {
+    opt = true,
+    after = "telescope.nvim",
+    config = conf.project
+}
+tools["rmagatti/auto-session"] = {
+    opt = true,
+    cmd = {"SaveSession", "RestoreSession", "DeleteSession"},
+    config = conf.auto_session
+}
+tools["rmagatti/session-lens"] = {
+    opt = true,
+    after = "telescope.nvim",
+    requires = {'rmagatti/auto-session', 'nvim-telescope/telescope.nvim'},
+    config = function()
+        require('session-lens').setup({})
+    end
+}
 tools["thinca/vim-quickrun"] = {opt = true, cmd = {"QuickRun", "Q"}}
 tools["michaelb/sniprun"] = {
     opt = true,

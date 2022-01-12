@@ -104,7 +104,7 @@ local dashboard_config = function()
         },
         find_project = {
             description = {" Project find               space f p "},
-            command = "Telescope project"
+            command = "Telescope projects"
         },
         find_file = {
             description = {" File find                  space f f "},
