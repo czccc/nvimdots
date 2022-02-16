@@ -41,6 +41,7 @@ tools["rmagatti/auto-session"] = {
     config = conf.auto_session
 }
 tools["rmagatti/session-lens"] = {
+    disable = true,
     opt = true,
     after = "telescope.nvim",
     requires = {'rmagatti/auto-session', 'nvim-telescope/telescope.nvim'},
